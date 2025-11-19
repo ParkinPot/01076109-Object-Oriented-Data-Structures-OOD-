@@ -1,0 +1,85 @@
+
+อาณาจักรมดแสนยิ่งใหญ่!!!
+
+ณ อาณาจักรมดแห่งหนึ่งมีราชินีมดเป็นผู้ปกครอง มีสมาชิกประกอบไปด้วยมด 2 ประเภท คือ มดงานและมดทหาร
+
+W (Worker) มดงาน : ขนอาหารได้ 2 หน่วย และต่อสู้ได้ 5 หน่วย
+A (Army) มดทหาร : ขนอาหารได้ 5 หน่วย และต่อสู้ได้ 10 หน่วย 
+ราชินีมดต้องการให้เหล่ามดทำภารกิจต่างๆ ดังนี้
+
+C x1 (Carry food) : x1 คือจำนวนอาหารที่ต้องขนเข้ารัง โดยใช้มดงานก่อน หากมดงานไม่เพียงพอจึงเรียกใช้มดทหารช่วย หากไม่สามารถขนอาหารได้ครบตามจำนวน ราชินีจะโกรธเพิ่มขึ้น 1 ครั้ง หากราชินีโกรธครบ 3 ครั้ง รังมดจะแตกและหยุดทำงานทันที
+F x2 (Fight enermy) : x2 คือจำนวน hp ของศัตรู โดยใช้มดทหารก่อน หากไม่พอจึงเรียกใช้มดงานช่วย หากมดไม่สามารถสู้ชนะศัตรูได้ รังมดจะแตกและหยุดทำงานทันที
+S (Show ants remaining) : แสดงรายชื่อมดงานและมดทหารที่เหลืออยู่ในรัง ณ ขณะนั้น
+W y1 (Add worker ants) : y1 คือจำนวนมดงานที่เพิ่มขึ้นมา โดยมดงานที่เพิ่มจะถูกเพิ่มต่อท้ายมดงานที่มีอยู่เดิมในลิสต์
+A y2 (Add army ants) : y2 คือจำนวนมดทหารที่เพิ่มขึ้นมา โดยมดทหารที่เพิ่มจะถูกเพิ่มต่อท้ายมดทหารที่มีอยู่เดิมในลิสต์
+เหล่ามดจะถูกจัดเก็บอยู่ใน linked list เดียวกัน โดยเรียงลำดับตามที่เพิ่มเข้ามา
+
+ชื่อมดแต่ละตัวจะตั้งตามประเภทและหมายเลขลำดับ เช่น W1, W2, ... สำหรับมดงาน และ A1, A2, ... สำหรับมดทหาร
+การเพิ่มมดใหม่จะต่อท้ายมดของประเภทนั้น ๆ เพื่อรักษาลำดับ
+การทำงานของมด
+
+มดจะถูกใช้ทำภารกิจตามลำดับจากหัวลิสต์ก่อนเสมอ
+หากมดตัวใดถูกใช้ทำภารกิจแล้ว มดตัวนั้นจะ ตายทันที และถูกลบออกจากลิสต์ ไม่สามารถถูกเรียกใช้อีกในภายหลัง
+รูปแบบ input คือ "จำนวนมดงาน จำนวนมดทหาร/คำสั่ง1,คำสั่ง2,คำสั่ง3,..."
+
+***This colony is our home***
+Enter input : 2 2/C 5,F 10,S,W 1,A 1,S
+Current Ant List: W1 W2 A1 A2
+
+Food carrying mission : W1 W2 A1
+Attack mission : A2
+-> Remaining worker ants: Empty
+-> Remaining soldier ants: Empty
+-> Remaining worker ants: W1
+-> Remaining soldier ants: A1
+
+***This colony is our home***
+Enter input : 1 1/C 3,S,W 2,S,F 10,S
+Current Ant List: W1 A1
+
+Food carrying mission : W1 A1
+-> Remaining worker ants: Empty
+-> Remaining soldier ants: Empty
+-> Remaining worker ants: W1 W2
+-> Remaining soldier ants: Empty
+Attack mission : W1 W2
+-> Remaining worker ants: Empty
+-> Remaining soldier ants: Empty
+
+***This colony is our home***
+Enter input : 0 0/W 3,A 2,C 6,F 15,C 4
+Current Ant List: Empty
+
+Food carrying mission : W1 W2 W3
+Attack mission : A1 A2
+Food carrying mission : Empty
+The food load is incomplete!
+Queen is angry! ! !
+
+
+***This colony is our home***
+Enter input : 2 1/C 6,S,A 1,W 2,F 80,S
+Current Ant List: W1 W2 A1
+
+Food carrying mission : W1 W2 A1
+-> Remaining worker ants: Empty
+-> Remaining soldier ants: Empty
+Attack mission : A1 W1 W2
+Ant nest has fallen!
+
+***This colony is our home***
+Enter input : 2 1/C 20,C 20,S,C 10
+Current Ant List: W1 W2 A1
+
+Food carrying mission : W1 W2 A1
+The food load is incomplete!
+Queen is angry! ! !
+Food carrying mission : Empty
+The food load is incomplete!
+Queen is angry! ! !
+-> Remaining worker ants: Empty
+-> Remaining soldier ants: Empty
+Food carrying mission : Empty
+The food load is incomplete!
+Queen is angry! ! !
+**The queen is furious! The ant colony has been destroyed**

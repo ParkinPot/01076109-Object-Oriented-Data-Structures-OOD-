@@ -1,0 +1,53 @@
+วันนี้เราจะมารู้จักกับ git version control กัน 
+    การทำงานของ Git นั้นเรียบง่าย มักใช้กับ Programming Project ทั้งหลาย มีหลักการใช้งานคล้ายคลึงกับ Linked List และ DAG แต่ในที่นี้เราจะใช้เพียงแค่ Linked List 
+    เท่านั้น โดย Folder ที่มี Git เปิดใช้งานอยู่จะถูกเรียกว่า Repository ซึ่งสามารถบันทึกสถานะของ Folder นั้นได้ด้วยการ Commit 
+    ซึ่งการสร้าง Commit แต่ละครั้งจะเก็บ Parent ไว้เพื่อบอกว่ามีการแก้ไขจาก Commit ไหนก่อนหน้า
+
+    และยังมีการแตก Branch เพื่อให้การแก้ไขข้อมูลแต่ละส่วนไม่กระทบต่อกัน ง่ายต่อการทำงานร่วมกันหลายคน ซึ่งหลังจากแยก Branch 
+    ออกไปแล้วสามารถ Merge กลับมาที่ Branch ตั้งต้นได้ ซึ่งหมายความว่า การ Merge นี้เป็น Commit ที่มี Parent มากกว่า 1 คือ Parent จาก Branch ที่แตกออกไป 
+    และจาก Branch ตั้งต้น
+
+    การ Commit แต่ละครั้ง จะมี id กำกับไว้ และเราสามารถดู Commit ทั้งหมดได้จาก Git history
+
+  
+Input
+    Git history ของแต่ละ Branch ซึ่งคั่นด้วย | 
+    และในแต่ละ Branch แบ่ง Commit ด้วย -> (เช่น 5 -> 4 หมายความว่า มีการ Commit(id: 5) ถัดจาก Parent Commit(id: 4) )
+
+
+Output
+    บรรทัดที่ 1 จงระบุว่าจาก Git history ของแต่ละ Branch ที่กำหนดให้ว่า Branch เหล่านี้อยู่ใน Repository เดียวกันหรือไม่
+    หากบรรทัดที่ 1 เป็นจริง
+    บรรทัดที่ 2 ให้เช็คว่า ใน Repository นี้เกิดการ Merge Commit ทั้งหมดกี่ครั้ง (ไม่นับ fast-forwarded merge)
+
+ปล.1 ห้ามใช้ List, Set หรือ Tuple หากใช้พยายามใช้ให้น้อยที่สุด และห้ามใช้ dict โดยเด็ดขาด
+ปล.2 อนุญาติให้ใช้แค่ Singly Linked List (ห้ามใช้ Doubly Linked List)
+ปล.3 จะสังเกตได้ว่าบาง Commit ในบาง Branch มี id เดียวกันได้ ซึ่งนั่นเกิดจากการ Merge กัน
+
+Git History: 5 -> 3 -> 11 -> 6 -> 1 | 8 -> 7 -> 3 | 11 -> 12 -> 4 -> 1
+Are these branches in the same repository? False
+
+Git History: 5 -> 3 -> 11 -> 6 -> 1 | 8 -> 7 -> 3 -> 9 -> 1 | 11 -> 12 -> 4 -> 1
+Are these branches in the same repository? True
+2 Merge(s)
+
+Git History: 11 -> 3 -> 9 -> 8 -> 5 | 6 -> 1 -> 10 -> 5 | 20 -> 4 -> 11 -> 6 -> 2 -> 10 -> 5 | 4 -> 7 -> 2 -> 10 -> 5
+Are these branches in the same repository? True
+3 Merge(s)
+
+Git History: 3 -> 5 -> 8 -> 12 -> 4 -> 6 | 7 -> 9 -> 11 -> 1 -> 2 -> 6 | 7 -> 9 -> 10 -> 1 -> 2 -> 6
+Are these branches in the same repository? True
+1 Merge(s)
+
+Git History: 13 -> 3 -> 6 -> 5 -> 4 -> 19 -> 8 | 2 -> 5 -> 4 -> 19 -> 8 | 10 -> 5 -> 1 -> 14 -> 15 -> 9 -> 19 -> 8 | 10 -> 11 -> 8 
+| 20 -> 17 -> 21 -> 18 -> 4 -> 19 -> 8 | 1 -> 20 -> 16 -> 18 -> 4 -> 19 -> 8
+Are these branches in the same repository? True
+4 Merge(s)
+
+Git History: 13 -> 4 -> 1 | 18 -> 6 -> 2 -> 1 | 22 -> 1 | 16 -> 4 -> 1
+Are these branches in the same repository? True
+0 Merge(s)
+
+Git History: 69 -> 3 -> 2 -> 1 -> 4 | 11 -> 3 -> 7 -> 8 -> 4 | 13 -> 11 -> 32 -> 4 | 82 -> 69 -> 7 -> 15 -> 4
+Are these branches in the same repository? True
+4 Merge(s)
