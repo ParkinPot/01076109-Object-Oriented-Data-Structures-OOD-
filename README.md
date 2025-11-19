@@ -2,17 +2,17 @@
 
 Click the links below to jump to a specific chapter:
 
-* **[📘 Chapter 1: Python Basics, Math & Patterns](#chapter-1-python-basics-math--patterns)**
-* **[📘 Chapter 2: Classes, Strings & Logic](#chapter-2-classes-strings--logic)** 
-* **[📚 Chapter 3: Stack Applications & Simulations](#chapter-3-stack-applications--simulations)**
-* **[📚 Chapter 4: Queue Data Structures](#chapter-4-queue-data-structures)**
-* **[🔗 Chapter 5: Linked Data Structures](#chapter-5-linked-data-structures)**
-* **[🔄 Chapter 6: Recursion & Backtracking](#chapter-6-recursion--backtracking)**
-* **[🌳 Chapter 7: Binary Search Trees (BST)](#chapter-7-binary-search-trees-bst)**
-* **[🌳 Chapter 8: AVL Trees (Self-Balancing BST)](#chapter-8-avl-trees-self-balancing-bst)**
-* **[🔢 Chapter 9: Sorting Algorithms](#chapter-9-sorting-algorithms)**
-* **[🔎 Chapter 10: Search & Hashing](#chapter-10-search--hashing)**
-* **[🕸️ Chapter 11: Graph Algorithms](#chapter-11-graph-algorithms)**
+* **[📘 Chapter 1: Python Basics, Math & Patterns](#-chapter-1-python-basics-math--patterns)**
+* **[📘 Chapter 2: Classes, Strings & Logic](#-chapter-2-classes-strings--logic)** 
+* **[📚 Chapter 3: Stack Applications & Simulations](#-chapter-3-stack-applications--simulations)**
+* **[📚 Chapter 4: Queue Data Structures](#-chapter-4-queue-data-structures)**
+* **[🔗 Chapter 5: Linked Data Structures](#-chapter-5-linked-data-structures)**
+* **[🔄 Chapter 6: Recursion & Backtracking](#-chapter-6-recursion--backtracking)**
+* **[🌳 Chapter 7: Binary Search Trees (BST)](#-chapter-7-binary-search-trees-bst)**
+* **[🌳 Chapter 8: AVL Trees (Self-Balancing BST)](#-chapter-8-avl-trees-self-balancing-bst)**
+* **[🔢 Chapter 9: Sorting Algorithms](#-chapter-9-sorting-algorithms)**
+* **[🔎 Chapter 10: Search & Hashing](#-chapter-10-search--hashing)**
+* **[🕸️ Chapter 11: Graph Algorithms](#-chapter-11-graph-algorithms)**
 
 ---
 
