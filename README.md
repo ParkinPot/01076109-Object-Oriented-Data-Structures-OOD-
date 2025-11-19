@@ -12,7 +12,7 @@ Click the links below to jump to a specific chapter:
 * **[🌳 Chapter 8: AVL Trees (Self-Balancing BST)](#-chapter-8-avl-trees-self-balancing-bst)**
 * **[🔢 Chapter 9: Sorting Algorithms](#-chapter-9-sorting-algorithms)**
 * **[🔎 Chapter 10: Search & Hashing](#-chapter-10-search--hashing)**
-* **[🕸️ Chapter 11: Graph Algorithms](#-chapter-11-graph-algorithms)**
+* **[🕸️ Chapter 11: Graph Algorithms](#%EF%B8%8F-chapter-11-graph-algorithms)**
 
 ---
 
