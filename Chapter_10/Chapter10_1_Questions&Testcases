@@ -1,0 +1,174 @@
+Percentile of a Number
+
+ใช้ Binary Search หา Percentile ของตัวเลขจากข้อมูลที่เรียงลำดับน้อยไปมากแล้ว(ถ้าไม่เรียงไม่ต้องหา) 
+
+โดยแสดง index และ percentile และควรรับเป็น float 
+
+(พี่แก้ไขโจทย์ให้ index เป็น float กรณีมีเลขอยู่ในช่วงข้อมูลแล้ว)
+
+** น้องที่ส่งผ่านแล้ว ไม่ต้องส่งใหม่ (แต่ถ้าน้องอยากแก้ไขสามารถแก้ไขได้)
+
+แต่ถ้าเข้าไปดูจะขึ้นว่าบาง testcase ผิด แต่ถือว่าน้องได้คะแนนผ่านแล้ว
+
+กรณีเลขไม่มีในข้อมูล
+
+เลขอยู่ "ระหว่าง" ข้อมูลน้อยที่สุดและมากที่สุด หาค่าเฉลี่ยของตำแน่ง index นั้น
+
+เลข "น้อยกว่า" ข้อมูลทุกตัว index = -1, percentile = 0
+
+เลข "มากกว่า" ข้อมูลทุกตัว index = 999, percentile =100
+
+
+
+สูตร
+
+percentile = (index + 1) * 100 / n
+
+Index = (upper_value - lower_value) * decimal + lower_value
+
+
+
+*** ใช้ Binary Search นะจ๊ะ
+
+>>> การรับ input
+
+ข้อมูลเลขคั่นด้วย space / ตัวเลขที่ต้องการหา
+
+Enter Input : 1 2 4 6 9 19 20 26 29 30 33 39 45/30
+
+
+
+>>> อธิบาย Test Case
+
+
+
+Enter Input : 1 2 3 4 5/4
+
+
+
+index      :   3.0
+
+percentile :   80.0
+
+หา percentile ของ 4
+
+Index 	= 3
+
+Percentile = (3 + 1) * 100 / 5
+
+		= 80
+
+
+
+Enter Input : 1 2 3 4 5/6
+
+
+
+index      :   999
+
+percentile :   100
+
+หา percentile ของ 6 ซึ่งมากกว่าทุกตัวในข้อมูล
+
+Index 	= 999
+
+Percentile = 100
+
+
+
+Enter Input : 1 2 3 4 5/0
+
+
+
+index      :   -1
+
+percentile :    0
+
+หา percentile ของ 0 ซึ่งน้อยกว่าทุกตัวในข้อมูล
+
+Index 	= -1
+
+Percentile = 0
+
+
+
+
+
+Enter Input : 1 2 3 4 5/3.5
+
+
+
+index      :   2.5
+
+percentile :   70.0
+
+หา percentile ของ 3.5 ซึ่งไม่มีในข้อมูล
+
+
+
+Index 	= (upper_value - lower_value) * decimal + lower_value
+
+	= ( 4 - 3 ) * 0.5 + 3
+
+	= 2.5
+
+Percentile = (2.5 + 1) * 100 / 5
+
+	   = 70
+
+No file chosen
+Submit
+Testcase : #1
+Enter Input : 1 2 3 4 5/4
+
+index      :   3.0
+percentile :   80.0
+
+Testcase : #2
+Enter Input : 1 2 3 4 5/5
+
+index      :   4.0
+percentile :   100
+
+Testcase : #3
+Enter Input : 1 2 3 4 5/1
+
+index      :   0.0
+percentile :   20.0
+
+Testcase : #4
+Enter Input : 1 2 4 6 9 19 20 26 29 30 33 39 45/30
+
+index      :   9.0
+percentile :   76.92307692307692
+
+Testcase : #5
+Enter Input : 10 20 30 40 50/25
+
+index      :   1.5
+percentile :   50.0
+
+Testcase : #6
+Enter Input : 1 3 5 7/0
+
+index      :   -1
+percentile :   0
+
+Testcase : #7
+Enter Input : 1 3 5 7/10
+
+index      :   999
+percentile :   100
+
+Testcase : #8
+Enter Input : 0.5 1.5 2.5 3.5 4.5/2
+
+index      :   1.5
+percentile :   50.0
+
+Testcase : #9
+Enter Input : 1 2 2 3 4 5 /2
+
+index      :   2.0
+percentile :   50.0
+
