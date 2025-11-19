@@ -1,0 +1,115 @@
+Printer จากยุคโบราณยุคนึง สามารถพอจะพิมพ์ข้อความได้ออกมาได้ ด้วยข้อจำกัดหลายอย่าง เช่น
+- หากมีการส่งคำสั่งให้พิมพ์ข้อความใดๆ Printer จะพิมพ์ข้อความออกมาได้เพียงครั้งละหนึ่งแถว หลังจากผ่านไปหนึ่งหน่วยเวลา โดยแต่ละแถวมีความยาวแถวละ 5 ตัวอักษร หากข้อความที่ต้องการพิมพ์มีความยาวมากกว่านั้น Printer จะนำไปพิมพ์ต่อในแถวถัดไป
+
+- หากมีการส่งคำสั่งให้พิมพ์เพิ่ม ในขณะที่เครื่องกำลังพิมพ์อยู่ Printer จะนำคำสั่งนี้ไปต่อคิว โดยมีได้สูงสุด 3 คิว
+- หากมีการส่งคำสั่งให้พิมพ์เพิ่ม ในขณะที่คิวเต็มแล้ว จะขึ้นแจ้งเตือนผู้ใช้ และเมินคำสั่งนั้นไป
+
+- หาก Printer พิมพ์ข้อความเสร็จไปหนึ่งคำสั่ง และมีคำสั่งพิมพ์อื่นๆอยู่ในคิว ในช่วงเวลาเดียวกัน Printer จะนำข้อความของคำสั่งเหล่านั้นมาเตรียมพิมพ์ต่อทันที
+
+- ในหนึ่งคำสั่งจะใช้กระดาษหนึ่งแผ่น หากกระดาษหมด Printer จะหยุดพิมพ์ข้อความที่มาจากคำสั่งถัดไป จนกว่าจะตรวจสอบได้ว่ามีการเติมกระดาษเข้ามาแล้ว พร้อมแจ้งเตือนตลอดเวลา รวมถึงตอนที่มีการรับคำสั่งพิมพ์ใหม่เข้ามา
+
+- หากไม่มีคำสั่งใดเหลือ หรือ ไม่สามารถพิมพ์ข้อความใดต่อได้ ให้หยุดการทำงานได้เลย
+
+Input
+
+มี 3 ส่วน คือ {Command}:{Time} {Data?}, ...
+
+โดย Command จะประกอบไปด้วย
+
+Print(P) - ส่งพิมพ์ ข้อความ(Data) ไปที่ Printer
+
+Status(S) - แสดงสถานะของเครื่องว่า กำลังทำงานอยู่หรือไม่ และมีกี่คำสั่งที่รอต่อคิวอยู่
+
+R(Refill paper) - เติมกระดาษตามจำนวนที่แสดงใน Data
+
+T(Pick up tray) - หยิบถาดเก็บกระดาษที่พิมพ์เสร็จแล้วมาดูตามลำดับ
+
+ซึ่งจะกระทำแต่ละ Command ณ เวลา Time
+
+
+
+Output
+
+แสดงผลเมื่อมีการ Error (ไม่ว่าจะเป็นเพราะกระดาษหมด หรือคิวเต็ม), แสดง Status(S) และแสดงกระดาษที่พิมพ์เสร็จแล้วในถาด(T) ในรูปแบบบรรทัดละหนึ่งหน่วยเวลา
+
+
+
+ปล.1 เริ่มต้น Printer จะมีกระดาษให้อยู่ 3 แผ่นอยู่แล้ว
+
+ปล.2 ลำดับการแสดงผลลัพธ์ของกระดาษที่พิมพ์เสร็จแล้ว จะอยู่ในรูปของ Stack
+
+Enter input: P:0 Sawaddee, P:0 Hello, P:3 Abcdfg, P:4 GGEZCU0, T:4, T:5, T:6, T:7
+[Time 4] You got: "Hello", "Sawaddee"
+[Time 5] Error: Printer is out of paper. Please refill.
+[Time 5] You got: "Abcdfg"
+[Time 6] Error: Printer is out of paper. Please refill.
+[Time 6] You got: Nothing in tray.
+[Time 7] Error: Printer is out of paper. Please refill.
+[Time 7] You got: Nothing in tray.
+
+Enter input: S:0, P:0 aarghhh, P:1 huh, P:1 oreo, S:1, T:3, P:3 eieiei, R:3 2, S:5, T:6
+[Time 0] Status: Idle. Pending 0 file(s) in queue.
+[Time 1] Status: Printing... "aarghhh" and Pending 2 file(s) in queue.
+[Time 3] You got: "huh", "aarghhh"
+[Time 5] Status: Printing... "eieiei" and Pending 0 file(s) in queue.
+[Time 6] You got: "eieiei", "oreo"
+
+Enter input: P:0 a, P:0 b, P:0 c, P:0 d, P:0 e, P:0 f, R:2 5, S:3, P:3 g, T:5
+[Time 0] Error: Printer buffer is full. Please try again later.
+[Time 0] Error: Printer buffer is full. Please try again later.
+[Time 3] Status: Printing... "d" and Pending 0 file(s) in queue.
+[Time 5] You got: "g", "d", "c", "b", "a"
+
+Enter input: R:0 10, P:1 aa, P:2 bb, P:3 c c, P:4 ddd, P:5 e, P:6 f, P:7 g, P:8 h, P:9 i, P:10 j, S:11, T:11, T:12
+[Time 11] Status: Idle. Pending 0 file(s) in queue.
+[Time 11] You got: "j", "i", "h", "g", "f", "e", "ddd", "c c", "bb", "aa"
+[Time 12] You got: Nothing in tray.
+
+Enter input: P:1 there, P:2 hi, S:2, T:3, P:4 everybody, P:5 Ohio, S:6, P:6 some, R:6 1, S:6, S:7, R:7 1, T:8
+[Time 2] Status: Printing... "hi" and Pending 0 file(s) in queue.
+[Time 3] You got: "hi", "there"
+[Time 6] Error: Printer is out of paper. Please refill.
+[Time 6] Status: Idle. Pending 1 file(s) in queue.
+[Time 6] Error: Printer is out of paper. Please refill.
+[Time 6] Status: Printing... "Ohio" and Pending 1 file(s) in queue.
+[Time 7] Error: Printer is out of paper. Please refill.
+[Time 7] Status: Idle. Pending 1 file(s) in queue.
+[Time 8] You got: "some", "Ohio", "everybody"
+
+Enter input: P:0 hello, P:1 world, S:2, R:2 1, P:2 and, P:2 hello, S:2, T:3, S:3
+[Time 2] Status: Idle. Pending 0 file(s) in queue.
+[Time 2] Status: Printing... "and" and Pending 1 file(s) in queue.
+[Time 3] You got: "and", "world", "hello"
+[Time 3] Status: Printing... "hello" and Pending 0 file(s) in queue.
+
+Enter input: P:0 ce person in the world, P:1 You are such a ni, S:3, S:5, P:5 beneath, P:5 beyond, P:5 gambling, R:6 1, S:6, P:7 Kimi wa, S:7, P:9 Kimi wa, T:10, S:12, R:12 1, S:14, S:15, T:15
+[Time 3] Status: Printing... "ce person in the world" and Pending 1 file(s) in queue.
+[Time 5] Status: Printing... "You are such a ni" and Pending 0 file(s) in queue.
+[Time 6] Status: Printing... "You are such a ni" and Pending 3 file(s) in queue.
+[Time 7] Error: Printer buffer is full. Please try again later.
+[Time 7] Status: Printing... "You are such a ni" and Pending 3 file(s) in queue.
+[Time 10] You got: "You are such a ni", "ce person in the world"
+[Time 12] Status: Printing... "beyond" and Pending 2 file(s) in queue.
+[Time 14] Status: Printing... "gambling" and Pending 1 file(s) in queue.
+[Time 15] Error: Printer is out of paper. Please refill.
+[Time 15] Status: Idle. Pending 1 file(s) in queue.
+[Time 15] You got: "gambling", "beyond", "beneath"
+
+Enter input: P:0 a, P:0 a, P:0 a, S:4, P:5 Go go!, R:5 1, T:7, R:8 1, P:8 T-rex, P:9 Spinosaurus, P:9 Hippopotamus, S:9, P:11 I got u, R:11 22, S:11, P:12 Koala, P:12 Parrot, P:60 Whoami, T:70
+[Time 4] Status: Idle. Pending 0 file(s) in queue.
+[Time 5] Error: Printer is out of paper. Please refill.
+[Time 7] You got: "Go go!", "a", "a", "a"
+[Time 9] Error: Printer is out of paper. Please refill.
+[Time 9] Error: Printer is out of paper. Please refill.
+[Time 9] Status: Idle. Pending 2 file(s) in queue.
+[Time 10] Error: Printer is out of paper. Please refill.
+[Time 11] Error: Printer is out of paper. Please refill.
+[Time 11] Error: Printer is out of paper. Please refill.
+[Time 11] Status: Printing... "Spinosaurus" and Pending 2 file(s) in queue.
+[Time 12] Error: Printer buffer is full. Please try again later.
+[Time 70] You got: "Whoami", "Koala", "I got u", "Hippopotamus", "Spinosaurus", "T-rex"
+
+Enter input: P:0 Hooooo0000oman, P:1 Konbanwa, P:2 Amerakajin desu ka, P:3 BLahh, P:5 uiiiaauuiiia, P:5 siuuuu, P:5 nani, S:5
+[Time 5] Error: Printer buffer is full. Please try again later.
+[Time 5] Status: Printing... "Amerakajin desu ka" and Pending 3 file(s) in queue.
+[Time 9] Error: Printer is out of paper. Please refill.
