@@ -1,0 +1,89 @@
+This is your BOOK!!!
+
+ใช้กลยุทธ์ Move To Front เพื่อบริหารร้านเช่าหนังสือ
+
+น้อง ๆ จะได้รับบทเป็น เจ้าของร้านเช่าหนังสือ
+ช่วงนี้ลูกค้าน้อยลงทุกที เจ้าของร้านจึงต้องคิดวิธีใหม่ในการจัดวางหนังสือ เพื่อให้ลูกค้าหาหนังสือที่อยากอ่านได้ง่ายขึ้น
+
+กติกามีดังนี้:
+
+1.      ลูกค้าเช่าหนังสือจากชั้น
+
+o   หนังสือทุกเล่มบนชั้นวางเรียงเป็นแถว เช่น A, B, C, D, E
+
+o   ราคาค่าเช่าขึ้นกับลำดับที่วางอยู่ เช่น ถ้าลูกค้าเลือก B (อยู่ตำแหน่งที่ 2) → จ่าย 2 เหรียญ
+
+o   หลังร้านได้รับคืน เจ้าของร้านจะนำเล่มนั้นมาไว้หน้าสุดของชั้น
+
+2.      ลูกค้าขอหนังสือที่ไม่มีบนชั้น (Not Found)
+
+o   เจ้าของร้านผู้มีหนังสือทุกเล่มอยู่แล้ว จะไปหยิบจากห้องเก็บของมาให้
+
+o   การหยิบจากห้องเก็บของแพงกว่า ดังนั้นค่าเช่า = จำนวนหนังสือบนชั้น + 1
+
+o   หลังจากนั้นเจ้าของร้านยังไม่วางขึ้นชั้นแต่จะเก็บไว้ที่เคาน์เตอร์เผื่อมีคนมาขออีก
+
+3.      ลูกค้ากลับมาขอหนังสือจากเคาน์เตอร์ (ครั้งที่สอง)
+
+o   เจ้าของร้านดีใจที่เก็บไว้ → คิดค่าเช่าเพียง 1 เหรียญ
+
+o   หลังจากนั้น นำเล่มนี้มาไว้ที่หน้าสุดของชั้น
+
+ 
+
+input: รายชื่อหนังสือบนชั้นวาง และลำดับหนังสือที่ลูกค้าต้องการ
+
+
+output: รายชื่อหนังสือบนชั้นหลังจบการเช่ายืม และรายได้ทั้งหมด
+
+This is your BOOK!!!
+Enter input: A B C D/A B C D
+Search A -> found at 1 move to front ->  A B C D
+Search B -> found at 2 move to front ->  B A C D
+Search C -> found at 3 move to front ->  C B A D
+Search D -> found at 4 move to front ->  D C B A
+
+Final books: D C B A
+Total cost: 10
+
+
+This is your BOOK!!!
+Enter input: A B C/D
+Search D -> not found -> A B C
+
+Final books: A B C
+Total cost: 4
+
+This is your BOOK!!!
+Enter input: A B/C D C D E E
+Search C -> not found -> A B
+Search D -> not found -> A B
+Search C -> add new book ->  C A B
+Search D -> add new book ->  D C A B
+Search E -> not found -> D C A B
+Search E -> add new book ->  E D C A B
+
+Final books: E D C A B
+Total cost: 14
+
+This is your BOOK!!!
+Enter input: A B/C C C
+Search C -> not found -> A B
+Search C -> add new book ->  C A B
+Search C -> found at 1 move to front ->  C A B
+
+Final books: C A B
+Total cost: 5
+
+This is your BOOK!!!
+Enter input: A B C D E/C A F F G A G
+Search C -> found at 3 move to front ->  C A B D E
+Search A -> found at 2 move to front ->  A C B D E
+Search F -> not found -> A C B D E
+Search F -> add new book ->  F A C B D E
+Search G -> not found -> F A C B D E
+Search A -> found at 2 move to front ->  A F C B D E
+Search G -> add new book ->  G A F C B D E
+
+Final books: G A F C B D E
+Total cost: 22
