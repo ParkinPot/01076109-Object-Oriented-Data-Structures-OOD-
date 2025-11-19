@@ -1,0 +1,137 @@
+ให้นักศึกษาเช็คว่า BST ที่ได้เป็น AVL หรือไม่
+
+
+
+class BST:
+    class Node:
+        def __init__(self, data):
+            self.data = data
+            self.left = None
+            self.right = None
+            self.h = 1
+
+        def update_height(self):
+            pass
+    
+        def balance_factor(self):
+            pass
+        
+    def __init__(self):
+        self.root = None
+    
+    def insert(self,key):
+        if not self.root:
+            self.root = BST.Node(key)
+        else:
+            BST._insert(self.root,key)
+
+    def _insert(node,key):
+        if key < node.data:
+            if node.left:
+                BST._insert(node.left,key)
+            else:
+                node.left = BST.Node(key)
+        else:
+            if node.right:
+                BST._insert(node.right,key)
+            else:
+                node.right = BST.Node(key)
+   
+
+    def _get_format(root,ans = ""):
+        if root:
+            temp = ""
+            if root.right:
+                temp += BST._get_format(root.right,ans + "     ")
+            temp += f"{ans}{root.data}\n"
+            if root.left:
+                temp += BST._get_format(root.left,ans + "     ")
+            return temp
+        return ""
+    
+    def __str__(self):
+        return BST._get_format(self.root)
+
+################################
+'''
+⠀⠀⢘⣾⣾⣿⣾⣽⣯⣼⣿⣿⣴⣽⣿⣽⣭⣿⣿⣿⣿⣿⣧
+⠀⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⠀⠀⠠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⠀⠀⣰⣯⣾⣿⣿⡼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿
+⠀⠀⠛⠛⠋⠁⣠⡼⡙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠁
+⠀⠀⠀⠤⣶⣾⣿⣿⣿⣦⡈⠉⠉⠉⠙⠻⣿⣿⣿⣿⣿⠿⠁⠀
+⠀⠀⠀⠀⠈⠟⠻⢛⣿⣿⣿⣷⣶⣦⣄⠀⠸⣿⣿⣿⠗⠀⠀⠀
+⠀⠀⠀⠀⠀⣼⠀⠄⣿⡿⠋⣉⠈⠙⢿⣿⣦⣿⠏⡠⠂⠀⠀⠀
+⠀⠀⠀⠀⢰⡌⠀⢠⠏⠇⢸⡇⠐⠀⡄⣿⣿⣃⠈⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠈⣻⣿⢫⢻⡆⡀⠁⠀⢈⣾⣿⠏⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⢀⣿⣻⣷⣾⣿⣿⣷⢾⣽⢭⣍⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⣼⣿⣿⣿⣿⡿⠈⣹⣾⣿⡞⠐⠁⠀⠀⠀⠁⠀⠀⠀
+⠀⠀⠀⠨⣟⣿⢟⣯⣶⣿⣆⣘⣿⡟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⡆⠀⠐⠶⠮⡹⣸⡟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+'''
+
+def isAVL(node : BST.Node):
+    pass
+
+
+################################
+
+
+tree = BST()
+
+print("**********IsAVL**********")
+for i in list(map(int, input("Enter numbers to insert in the tree: ").split())):
+    tree.insert(i)
+print("Tree:")
+print(tree)
+print("Is AVL???:", isAVL(tree.root))
+
+**********IsAVL**********
+Enter numbers to insert in the tree: 5 10 15 20 25
+Tree:
+                    25
+               20
+          15
+     10
+5
+
+Is AVL???: False
+
+**********IsAVL**********
+Enter numbers to insert in the tree: 15 10 20 8 12 17 25
+Tree:
+          25
+     20
+          17
+15
+          12
+     10
+          8
+
+Is AVL???: True
+
+**********IsAVL**********
+Enter numbers to insert in the tree: 50 30 70 20 40 60 80 10 25 35 45 55 65 75 85 5 1 27 28 29
+Tree:
+               85
+          80
+               75
+     70
+               65
+          60
+               55
+50
+               45
+          40
+               35
+     30
+                              29
+                         28
+                    27
+               25
+          20
+               10
+                    5
+                         1
+
+Is AVL???: False
